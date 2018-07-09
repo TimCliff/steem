@@ -2732,7 +2732,7 @@ BOOST_AUTO_TEST_CASE( sbd_stability )
 
       BOOST_TEST_MESSAGE( "Changing sam and gpo to set up market cap conditions" );
 
-      asset sbd_balance = asset( ( gpo.virtual_supply.amount * ( STEEM_SBD_STOP_PERCENT + 30 ) ) / STEEM_100_PERCENT, STEEM_SYMBOL ) * exchange_rate;
+      asset sbd_balance = asset( ( gpo.virtual_supply.amount * ( gpo.sbd_stop_percent + 30 ) ) / STEEM_100_PERCENT, STEEM_SYMBOL ) * exchange_rate;
       db_plugin->debug_update( [=]( database& db )
       {
          db.modify( db.get_account( "sam" ), [&]( account_object& a )
@@ -2798,7 +2798,7 @@ BOOST_AUTO_TEST_CASE( sbd_stability )
       auto last_print_rate = db->get_dynamic_global_properties().sbd_print_rate;
 
       // Keep producing blocks until printing SBD is back
-      while( ( db->get_dynamic_global_properties().current_sbd_supply * exchange_rate ).amount >= ( db->get_dynamic_global_properties().virtual_supply.amount * STEEM_SBD_START_PERCENT ) / STEEM_100_PERCENT )
+      while( ( db->get_dynamic_global_properties().current_sbd_supply * exchange_rate ).amount >= ( db->get_dynamic_global_properties().virtual_supply.amount * db->get_dynamic_global_properties().sbd_start_percent ) / STEEM_100_PERCENT )
       {
          auto& gpo = db->get_dynamic_global_properties();
          BOOST_REQUIRE( gpo.sbd_print_rate >= last_print_rate );
