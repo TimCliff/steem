@@ -2754,7 +2754,7 @@ BOOST_AUTO_TEST_CASE( sbd_stability )
 
       db_plugin->debug_generate_blocks( debug_key, 1, database::skip_witness_signature );
 
-      auto comment_reward = ( gpo.total_reward_fund_steem.amount + 2000 ) - ( ( gpo.total_reward_fund_steem.amount + 2000 ) * 25 * STEEM_1_PERCENT ) / STEEM_100_PERCENT ;
+      auto comment_reward = ( gpo.total_reward_fund_steem.amount + 85140 ) - ( ( gpo.total_reward_fund_steem.amount + 85140 ) * 25 * STEEM_1_PERCENT ) / STEEM_100_PERCENT ;
       comment_reward /= 2;
       auto sbd_reward = ( comment_reward * gpo.sbd_print_rate ) / STEEM_100_PERCENT;
       auto alice_sbd = db->get_account( "alice" ).sbd_balance + db->get_account( "alice" ).reward_sbd_balance + asset( sbd_reward, STEEM_SYMBOL ) * exchange_rate;
