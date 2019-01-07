@@ -376,7 +376,8 @@ struct extended_dynamic_global_properties
       delegation_return_period( o.delegation_return_period ),
       reverse_auction_seconds( o.reverse_auction_seconds ),
       sbd_stop_percent( o.sbd_stop_percent ),
-      sbd_start_percent( o.sbd_start_percent )
+      sbd_start_percent( o.sbd_start_percent ),
+      sbd_stop_adjust( o.sbd_stop_adjust )
    {}
 
    uint32_t          head_block_number = 0;
@@ -417,6 +418,7 @@ struct extended_dynamic_global_properties
 
    uint16_t          sbd_stop_percent = 0;
    uint16_t          sbd_start_percent = 0;
+   uint16_t          sbd_stop_adjust = 0;
 };
 
 struct api_witness_object
@@ -1176,7 +1178,7 @@ FC_REFLECT( steem::plugins::condenser_api::extended_dynamic_global_properties,
             (total_reward_fund_steem)(total_reward_shares2)(pending_rewarded_vesting_shares)(pending_rewarded_vesting_steem)
             (sbd_interest_rate)(sbd_print_rate)
             (maximum_block_size)(current_aslot)(recent_slots_filled)(participation_count)(last_irreversible_block_num)(vote_power_reserve_rate)
-            (delegation_return_period)(reverse_auction_seconds)(sbd_stop_percent)(sbd_start_percent) )
+            (delegation_return_period)(reverse_auction_seconds)(sbd_stop_percent)(sbd_start_percent)(sbd_stop_adjust) )
 
 FC_REFLECT( steem::plugins::condenser_api::api_witness_object,
              (id)
