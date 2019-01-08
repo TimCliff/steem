@@ -3779,7 +3779,7 @@ ilog( "dgp.sbd_stop_adjust: ${v} ", ("v", dgp.sbd_stop_adjust) );
 
          if( percent_sbd <= dgp.sbd_start_percent )
             dgp.sbd_print_rate = STEEM_100_PERCENT;
-         else if( percent_sbd >= dgp.sbd_stop_percent )
+         else if( percent_sbd >= dgp.sbd_stop_percent - dgp.sbd_stop_adjust )
             dgp.sbd_print_rate = 0;
          else
             dgp.sbd_print_rate = ( ( dgp.sbd_stop_percent - percent_sbd ) * STEEM_100_PERCENT ) / ( dgp.sbd_stop_percent - dgp.sbd_start_percent );
