@@ -3775,8 +3775,6 @@ void database::update_virtual_supply()
          auto percent_sbd = uint16_t( ( ( fc::uint128_t( ( dgp.current_sbd_supply * get_feed_history().current_median_history ).amount.value ) * STEEM_100_PERCENT )
             / dgp.virtual_supply.amount.value ).to_uint64() );
 
-ilog( "dgp.sbd_stop_adjust: ${v} ", ("v", dgp.sbd_stop_adjust) );
-
          if( percent_sbd <= dgp.sbd_start_percent )
             dgp.sbd_print_rate = STEEM_100_PERCENT;
          else if( percent_sbd >= dgp.sbd_stop_percent - dgp.sbd_stop_adjust )
